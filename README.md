@@ -40,8 +40,11 @@ After that, you need modify the dataset paths in `utils/options.py`.
 ## Pretrained Model
 
 We uploaded the pretrained models as below: 
+
 *ModelNe40*: `results/modelnet40_n768_unseen0_noise0_seed123/model.pth`,
+
 *7Scene* : `results/scene7_n768_unseen0_noise0_seed123/model.pth`, 
+
 *ICL-NUIM*: `results/icl_nuim_n768_unseen0_noise0_seed123/model.pth`.
 
 ## Acknowledgments
