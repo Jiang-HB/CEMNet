@@ -28,7 +28,7 @@ bash run.sh
 
 ## Dataset Preprocessing
 
-We generated the used dataset files `modelnet40_normal_n2048.pth` , `7scene_normal_n2048.pth` and `icl_nuim_normal_n2048.pth` by preprocessing the raw point clouds of *ModelNet40*, *7Scene* and *ICL-NUIM* , and uploaded them to [GoogleDisk](https://drive.google.com/drive/folders/1e3jsSMQCO3BvDBZmEhAg_ArW2z1yjr-_?usp=sharing). Also, you can generate them by yourself via:
+We generated the used dataset files `modelnet40_normal_n2048.pth` , `7scene_normal_n2048.pth` and `icl_nuim_normal_n2048.pth` by preprocessing the raw point clouds of *ModelNet40*, *7Scene* and *ICL-NUIM* , and uploaded them to [GoogleDisk](https://drive.google.com/drive/folders/1ne9naYI8M8v4Lv0L9AcQm60Jqb8ciQ6t?usp=sharing). Also, you can generate them by yourself via:
 
 ```bash
 cd datasets
