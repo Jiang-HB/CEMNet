@@ -71,7 +71,7 @@ class MC(Function):
         """
         distances = torch.zeros(len(srcs), srcs.size(2), 2).to(srcs.device)
         min_idxs = torch.zeros(len(srcs), srcs.size(2), 2).type(torch.int).to(srcs.device)
-        cemnet_lib_cuda.iou_distance_cuda(srcs, tgt, distances, epsilon, min_idxs)
+        cemnet_lib_cuda.mc_distance_cuda(srcs, tgt, distances, epsilon, min_idxs)
         distances = 2.0 - distances.sum(2).mean(1)
         return distances
 

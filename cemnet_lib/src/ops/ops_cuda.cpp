@@ -27,7 +27,7 @@ void cd_distance_cuda(at::Tensor srcs_tensor, at::Tensor tgt_tensor, at::Tensor 
     cd_distance_cuda_launcher(b, c, n, srcs, tgts, distances);
 }
 
-void iou_distance_cuda(at::Tensor srcs_tensor, at::Tensor tgt_tensor, at::Tensor distances_tensor, float r, at::Tensor min_idxs_tensor)
+void mc_distance_cuda(at::Tensor srcs_tensor, at::Tensor tgt_tensor, at::Tensor distances_tensor, float r, at::Tensor min_idxs_tensor)
 {
     int b = srcs_tensor.size(0);
     int c = srcs_tensor.size(1);
@@ -36,7 +36,7 @@ void iou_distance_cuda(at::Tensor srcs_tensor, at::Tensor tgt_tensor, at::Tensor
     const float *tgt = tgt_tensor.data<float>();
     float *distances = distances_tensor.data<float>();
     int *min_idxs = min_idxs_tensor.data<int>();
-    iou_distance_cuda_launcher(b, c, n, r, srcs, tgt, distances, min_idxs);
+    mc_distance_cuda_launcher(b, c, n, r, srcs, tgt, distances, min_idxs);
 }
 
 void cycle_distance_cuda(at::Tensor srcs_tensor, at::Tensor tgt_tensor, at::Tensor distances_tensor, int N, at::Tensor min_idxs_tensor, at::Tensor n_distances_tensor, at::Tensor n_idxs_tensor)

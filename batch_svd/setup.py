@@ -10,7 +10,8 @@ print(ext_src)
 setup(name=libname,
       packages=find_packages(exclude=('tests', 'build', 'csrc', 'include', 'torch_batch_svd.egg-info')),
       ext_modules=[CUDAExtension(
-          libname + '._c',
+          # libname + '._c',
+          "torch_batch_svd_cuda",
           sources=ext_src,
           libraries=["cusolver", "cublas"],
           extra_compile_args={'cxx': ['-O2', '-I{}'.format('{}/include'.format(libname))],

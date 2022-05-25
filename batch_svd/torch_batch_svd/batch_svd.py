@@ -1,6 +1,7 @@
-import torch
+import torch, torch_batch_svd_cuda
 
-from . import _c
+# from . import _c
+
 
 
 class BatchSVDFunction(torch.autograd.Function):
@@ -35,7 +36,7 @@ class BatchSVDFunction(torch.autograd.Function):
         else:
             U, S, V = out
 
-        _c.batch_svd_forward(input, U, S, V, True, 1e-7, 100, is_double)
+        torch_batch_svd_cuda.batch_svd_forward(input, U, S, V, True, 1e-7, 100, is_double)
         U.transpose_(1, 2)
         V.transpose_(1, 2)
         if ctx.is_half:
@@ -59,7 +60,7 @@ class BatchSVDFunction(torch.autograd.Function):
         if ctx.is_half:
             grad_u, grad_s, grad_v = grad_u.float(), grad_s.float(), grad_v.float()
 
-        grad_out: torch.Tensor = _c.batch_svd_backward(
+        grad_out: torch.Tensor = torch_batch_svd_cuda.batch_svd_backward(
             [grad_u, grad_s, grad_v],
             A, True, True, U.to(A.dtype), S.to(A.dtype), V.to(A.dtype)
         )

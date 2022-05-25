@@ -41,7 +41,7 @@ void closest_point_cuda_launcher(int b, int c, int n, float *closest_points, con
 
 // input: srcs(b, 3, n) tgt(3, n) distances(b)
 // output: None
-__global__ void iou_distance_cuda_kernel(int b, int c, int n, float r, const float *srcs, const float *tgt, float * distances, int *min_idxs)
+__global__ void mc_distance_cuda_kernel(int b, int c, int n, float r, const float *srcs, const float *tgt, float * distances, int *min_idxs)
 {
     int idx_block = blockIdx.x;   // b_idx
     int idx_thread = threadIdx.x; // n_idx
@@ -85,11 +85,11 @@ __global__ void iou_distance_cuda_kernel(int b, int c, int n, float r, const flo
     }
 }
 
-void iou_distance_cuda_launcher(int b, int c, int n, float r, const float *srcs, const float *tgt, float * distances, int *min_idxs)
+void mc_distance_cuda_launcher(int b, int c, int n, float r, const float *srcs, const float *tgt, float * distances, int *min_idxs)
 {
     dim3 grid(b, 1, 1);
     dim3 block(n, 1, 1);
-    iou_distance_cuda_kernel<<<grid, block, 0>>>(b, c, n, r, srcs, tgt, distances, min_idxs);
+    mc_distance_cuda_kernel<<<grid, block, 0>>>(b, c, n, r, srcs, tgt, distances, min_idxs);
 }
 
 // input: srcs(b, 3, n) tgt(3, n) distances(b)
