@@ -25,6 +25,7 @@ Before running our code, you need to install the `cemlib` and `batch_svd` librar
 ```bash
 bash run.sh
 ```
+(If you meet something error when intall `batch_svd`, please refer to [torch-batch-svd](https://github.com/KinglittleQ/torch-batch-svd).)
 
 ## Dataset Preprocessing
 
